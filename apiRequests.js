@@ -30,15 +30,15 @@ function requestEvents(city){
 
 // requestEvents("Austin")
 
-function requestMaps(maps){
-    axios.get(`https://www.google.com/maps/embed/v1/place
-    ?key=AIzaSyAG-uv9xEOb8Dxl8A5pXUdvBZfdZCHjMjg
-    &q=Eiffel+Tower,Paris+France`).then(function(data){
-        console.log(data)
-    })
-}
+// function requestMaps(maps){
+//     axios.get(`https://www.google.com/maps/embed/v1/place
+//     ?key=AIzaSyAG-uv9xEOb8Dxl8A5pXUdvBZfdZCHjMjg
+//     &q=Eiffel+Tower,Paris+France`).then(function(data){
+//         console.log(data)
+//     })
+// }
 
-requestMaps("Paris")
+// requestMaps("Paris")
 
 
 
