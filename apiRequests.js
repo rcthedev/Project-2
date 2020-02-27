@@ -28,18 +28,17 @@ function requestEvents(city){
     
 }
 
-// requestEvents("Austin")
+requestEvents("Austin")
 
-// function requestMaps(maps){
-//     axios.get(`https://www.google.com/maps/embed/v1/place
-//     ?key=AIzaSyAG-uv9xEOb8Dxl8A5pXUdvBZfdZCHjMjg
-//     &q=Eiffel+Tower,Paris+France`).then(function(data){
-//         console.log(data)
-//     })
-// }
 
-// requestMaps("Paris")
-
+let axios=require('axios');
+function requestMaps(maps){
+    axios.get("https://maps.googleapis.com/maps/api/place/textsearch/xml?query=restaurants+in+Sydney&key=AIzaSyDAYTt94WSv-TxMcYTyaL3tI07hEA8V3MY")
+    .then(function(data){
+        console.log(data)
+})
+}
+// requestMaps()
 
 
 module.exports = {
