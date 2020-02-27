@@ -46,3 +46,43 @@ module.exports = {
     apiWeather: apiWeather,
     requestWeather: requestWeather
 }
+
+
+// OpenTable API
+let city = "Tucson";
+let price = 4;
+
+const ApiUrl = `https://opentable.herokuapp.com/api/restaurants?city=${city}&price=${price}`;
+
+requestTable();
+                                  
+function requestTable(){
+
+    axios.get(ApiUrl)
+  .then(function (response) {
+    // handle success
+    console.log("success");
+    console.log(response.data);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+
+}
+
+// Active API
+
+const activeAPI = {
+    key: "ZMN3XNT7PBT6YJSF2ATU2J2K",
+    base: "http://api.amp.active.com/v2/search/?current_page=1&per_page=10&sort=distance&exclude_children=true&api_key=zmn3xnt7pbt6yjsf2atu2j2k"
+};
+
+function requestActive(){
+    axios.get(`http://api.amp.active.com/v2/search/?current_page=1&per_page=10&sort=distance&exclude_children=true&api_key=zmn3xnt7pbt6yjsf2atu2j2k=${near}`).then(function(data) {
+        console.log(data)
+    })
+}
