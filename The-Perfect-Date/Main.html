@@ -1,11 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+
+    <div id="map" style="width:75vw; height:75vh"></div>
+
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG-uv9xEOb8Dxl8A5pXUdvBZfdZCHjMjg&libraries=places"></script>
+    <script>
+        // This example requires the Places library. Include the libraries=places
+        // parameter when you first load the API. For example:
+        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+  
+        let map;
+        let service;
+        let infowindow;
+  
+        function initMap() {
+          let sydney = new google.maps.LatLng(32.218937, -110.859372);
+  
+          infowindow = new google.maps.InfoWindow();
+  
+          map = new google.maps.Map(
+              document.getElementById('map'), {center: sydney, zoom: 15});
+  
+          let request = {
+            query: 'circle k',
+            fields: ['name', 'geometry'],
+          };
+  
+          service = new google.maps.places.PlacesService(map);
+  
+          service.findPlaceFromQuery(request, function(results, status) {
+              console.log('REZZults', results)
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              for (let i = 0; i < results.length; i++) {
+                  console.log("REsults", results[i])
+                createMarker(results[i]);
+              }
+  
+              map.setCenter(results[0].geometry.location);
+            }
+          });
+        }
+
+        initMap()
+  
+        function createMarker(place) {
+          let marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location
+          });
+  
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(place.name);
+            infowindow.open(map, this);
+          });
+        }
+      </script>
+  </body>
 </html>
