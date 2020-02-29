@@ -69,7 +69,16 @@
     <div class="container">
     </div>
   </section>
-  
+  <script>
+    function openDrawerMenu(){
+  var x = document.getElementById("mainNavBar");
+  if (x.className === "navBar"){
+    x.className += " responsive";
+  } else {
+    x.className = "navBar";
+  }
+}
+  </script>
 
   <script type="text/javascript"
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG-uv9xEOb8Dxl8A5pXUdvBZfdZCHjMjg&libraries=places"></script>
