@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     // The Quiz Options cannot be null
-    pasword: {
+    password: {
       type: DataTypes.STRING,
       allowNull: false
     }
