@@ -9,15 +9,17 @@
     <title>questions</title>
 </head>
 <body>
-    <div class="container">
-        <div class="navBar" id="mainNavBar">
-          <a href="./Main.html">Home</a>
-          <a href="./questions.html">Questionare</a>
-          <a href="./login.html">Login/Signup</a>
-          <a href="./contactus.html">Contact</a>
-          <a href="javascript:void(0);" class="icon" onClick="openDrawerMenu()">&#9776;</a>
-        </div>
-      </div>
+
+  <div class="container">
+    <div class="navBar" id="mainNavBar">
+      <a href="./Main.html">Home</a>
+      <a href="./questions.html">questionare</a>
+      <a href="./login.html">Login/Signup</a>
+      <a href="./contactus.html">Contact</a>
+      <a href="javascript:void(0);" class="icon" onClick="openDrawerMenu()">&#9776;</a>
+    </div>
+  </div>
+
     <div class= "container">
         <div id= "questions"></div>
         <button class="u-full-width button-primary" type= "submit" id="send-responses" value="submit">Submit</button>
@@ -30,6 +32,7 @@
             ${data[i].text} 
         </h1>
         <h2>
+
             <button class="u-full-width button q-button" db-id="${data[i].id}" type="select" value="select">${data[i].choice1}</button>
             <button class="u-full-width button q-button" db-id="${data[i].id}" type="select" value="select">${data[i].choice2}</button>
             <button class="u-full-width button q-button" db-id="${data[i].id}" type="select" value="select">${data[i].choice3}</button>
@@ -55,6 +58,7 @@
 
 
 });
+
     </script>
 </body>
 </html>
