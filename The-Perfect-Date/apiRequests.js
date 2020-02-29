@@ -8,7 +8,7 @@ const apiWeather = {
 
 function requestWeather(query){
     axios.get(`${api.base}${query}&APPID=${api.key}&units=Imperial`).then(function(data){
-        console.log(data)
+        // console.log(data)
     })
 }
 
@@ -23,7 +23,7 @@ function requestWeather(query){
 function requestEvents(city){
     axios.get(`https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&city=${city}`
     ).then(function(data){
-        console.log(data)
+        // console.log(data)
     })
     
 }
@@ -31,11 +31,11 @@ function requestEvents(city){
 requestEvents("Austin")
 
 
-let axios=require('axios');
+// let axios=require('axios');
 function requestMaps(maps){
     axios.get("https://maps.googleapis.com/maps/api/place/textsearch/xml?query=restaurants+in+Sydney&key=AIzaSyDAYTt94WSv-TxMcYTyaL3tI07hEA8V3MY")
     .then(function(data){
-        console.log(data)
+        // console.log(data)
 })
 }
 // requestMaps()
@@ -60,12 +60,12 @@ function requestTable(){
     axios.get(ApiUrl)
   .then(function (response) {
     // handle success
-    console.log("success");
-    console.log(response.data);
+    // console.log("success");
+    // console.log(response.data);
   })
   .catch(function (error) {
     // handle error
-    console.log(error);
+    // console.log(error);
   })
   .then(function () {
     // always executed
@@ -82,6 +82,6 @@ const activeAPI = {
 
 function requestActive(){
     axios.get(`http://api.amp.active.com/v2/search/?current_page=1&per_page=10&sort=distance&exclude_children=true&api_key=zmn3xnt7pbt6yjsf2atu2j2k=${near}`).then(function(data) {
-        console.log(data)
+        // console.log(data)
     })
 }
