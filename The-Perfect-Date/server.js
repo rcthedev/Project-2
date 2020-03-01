@@ -24,7 +24,7 @@ app.use(express.json());
 // Static directory
 app.use(express.static("public"));
 
-
+  
 function populatedb() {
   db.Question.create({
     text: "Where do you feel most comfortable?",
@@ -105,42 +105,9 @@ function populatedb() {
   }).then(function(err,data){
     if (err) return console.log(err)
   })
-}
+  <br>
+  //Line Break for Date Questions
 
-
-app.get("/",function(req,res){
-  res.sendFile(__dirname+"/public/Main.html")
-});
-
-app.get("/api/uquestions",function(req,res){
-  db.Question.findAll({
-    where: {
-      question_type: "User"
-    }
-  })
-  .then(function(data){
-    console.log(data);
-    res.json(data)
-  })
-})
-
-app.post("/api/question",function(req,res){
-  for (let i = 0; i < req.body.choices.length; i++) {
-    db.UserResponse.create({
-      QuestionId: req.body.choices[i].id,
-      answer: req.body.choices[i].choice
-    })
-    .then(function(data){
-      console.log(data);
-      res.end()
-    })
-  console.log(req.body);
-  } 
-
-
-})
-
-function populatedb() {
   db.Question.create({
     text: "What is your first date price point?",
     choice1: "$",
@@ -263,17 +230,12 @@ function populatedb() {
   })
 }
 
-
 app.get("/",function(req,res){
   res.sendFile(__dirname+"/public/Main.html")
 });
 
 app.get("/api/questions",function(req,res){
-  db.Question.findAll({
-    where: {
-      question_type: "Date"
-    }
-  })
+  db.Question.findAll()
   .then(function(data){
     console.log(data);
     res.json(data)
