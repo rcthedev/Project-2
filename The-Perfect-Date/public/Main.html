@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+  <link rel="stylesheet" href="css/main.css">
+  <title>Home</title>
+</head>
+
+<body>
+  <body>
+    <div class="container">
+      <div class="navBar" id="mainNavBar">
+        <a href="./Main.html">Home</a>
+        <a href="./questions.html">Questionare</a>
+        <a href="./login.html">Login/Signup</a>
+        <a href="./contactus.html">Contact</a>
+        <a href="javascript:void(0);" class="icon" onClick="openDrawerMenu()">&#9776;</a>
+      </div>
+    </div>
+  <section class="section showcase">
+    <div class="container">
+      <div class="row">
+        <div class="full column">
+
+          <h5>Welcome to the perfect date!</h5>
+          <p>
+            Are you tired of all the basic dates of movies and dinner? well simply answer a few questions and we’ll
+            provide you different options for you and your date to have a grand time together.
+            we’ll supply the ideas but you have to supply your own date!
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION-A -->
+  <section class="section section-a">
+    <div class="container">
+      <div class="row">
+        <div class="one-third column">
+          <i class="fa fa-calendar"></i>
+          <h5>Plan Your Day</h5>
+          <p>We ask, you answer! </p>
+        </div>
+        <div class="one-third column">
+          <i class="fa fa-cloud"></i>
+          <h5>Taylor your profile </h5>
+          <p>create a profile to keep track of were you been</p>
+        </div>
+        <div class="one-third column">
+          <i class="fa fa-bus"></i>
+          <h5>Afordable and Easy to Use Ui </h5>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div id="map" style="width:60vw; height:50vh"></div>
+    </div>
+  </section>
+
+  <!-- SECTION-b -->
+  <section class="section section-c">
+    <div class="container">
+    </div>
+  </section>
+  <script>
+    function openDrawerMenu() {
+      var x = document.getElementById("mainNavBar");
+      if (x.className === "navBar") {
+        x.className += " responsive";
+      } else {
+        x.className = "navBar";
+      }
+    }
+  </script>
+
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG-uv9xEOb8Dxl8A5pXUdvBZfdZCHjMjg&libraries=places"></script>
+  <script>
+    // This example requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    //<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+    let map;
+    let service;
+    let infowindow;
+
+    function initMap() {
+      let sydney = new google.maps.LatLng(32.218937, -110.859372);
+
+      infowindow = new google.maps.InfoWindow();
+
+      map = new google.maps.Map(
+        document.getElementById('map'), { center: sydney, zoom: 15 });
+
+      let request = {
+        query: 'circle k',
+        fields: ['name', 'geometry'],
+      };
+
+      service = new google.maps.places.PlacesService(map);
+
+      service.findPlaceFromQuery(request, function (results, status) {
+        console.log('REZZults', results)
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (let i = 0; i < results.length; i++) {
+            console.log("REsults", results[i])
+            createMarker(results[i]);
+          }
+
+          map.setCenter(results[0].geometry.location);
+        }
+      });
+    }
+
+    initMap()
+
+    function createMarker(place) {
+      let marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+      });
+
+      google.maps.event.addListener(marker, 'click', function () {
+        infowindow.setContent(place.name);
+        infowindow.open(map, this);
+      });
+    }
+  </script>
+</body>
+
+</html>
