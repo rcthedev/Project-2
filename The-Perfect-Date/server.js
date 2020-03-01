@@ -27,26 +27,122 @@ app.use(express.static("public"));
 
 function populatedb() {
   db.Question.create({
-    text: "favorite color?",
-    choice1: "pink",
-    choice2: "blue",
-    choice3: "red",
-    choice4: "green",
-    choice5: "orange",
-    choice6: "purple",
-    question_type: "bullshit"
+    text: "What is your first date price point?",
+    choice1: "$",
+    choice2: "$$",
+    choice3: "$$$",
+    // choice4: "",
+    // choice5: "",
+    // choice6: "",
+    question_type: "Date"
   }).then(function(err,data){
     if (err) return console.log(err)
   })
   db.Question.create({
-    text: "favorite food?",
-    choice1: "none",
-    choice2: "all",
-    choice3: "people",
-    choice4: "cheese",
-    choice5: "meat",
-    choice6: "veggies",
-    question_type: "bullshit"
+    text: "What don't you like??",
+    choice1: "Dinner & a Movie",
+    choice2: "Outdoor Activities",
+    choice3: "Concert/Event",
+    choice4: "Museums/Arts",
+    // choice5: "",
+    // choice6: "",
+    question_type: "Date"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "Do you and your date bond over...",
+    choice1: "Art/History?",
+    choice2: "Music?",
+    choice3: "Nutrition and Fitness?",
+    choice4: "Foodies?",
+    // choice5: "",
+    // choice6: "",
+    question_type: "Date"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "Where does your date feel most at home?",
+    choice1: "Coffee Shop",
+    choice2: "Around OThers",
+    choice3: "At Home",
+    choice4: "Amusement Park/Park",
+    // choice5: "",
+    // choice6: "",
+    question_type: "Date"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "What is their ideal date?",
+    choice1: "Fancy dinner and night out on the town",
+    choice2: "Brunch and laid back conversation",
+    choice3: "Amusment Park/Escape",
+    choice4: "Outdoor Adventures",
+    // choice5: "",
+    // choice6: "",
+    question_type: "Date"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "What are you planning on wearing?",
+    choice1: "Comfy",
+    choice2: "Casual",
+    choice3: "Business Formal",
+    choice4: "Formal",
+    // choice5: "",
+    // choice6: "",
+    question_type: "Date"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "What is your date's love language?",
+    choice1: "Words of Affirmation",
+    choice2: "Acts of Service",
+    choice3: "Recieving Gifts",
+    choice4: "Quality Time",
+    choice5: "Physical Touch",
+    // choice6: "",
+    question_type: "Date"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "What is your date's favorite thing to do?",
+    choice1: "Playing Video Games",
+    choice2: "Talking with Friends",
+    choice3: "Working Out",
+    choice4: "Reading a Book",
+    // choice5: "",
+    // choice6: "",
+    question_type: "Date"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "What is your date's favorite food?",
+    choice1: "Asian",
+    choice2: "Mexican",
+    choice3: "Italian",
+    choice4: "American",
+    choice5: "Vegetarian/Vegan",
+    choice6: "Idian",
+    question_type: "Date"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "Do you appreciate over the top gestures?",
+    choice1: "Yes",
+    choice2: "Occasionally",
+    choice3: "No",
+    // choice4: "",
+    // choice5: "",
+    // choice6: "",
+    question_type: "User"
   }).then(function(err,data){
     if (err) return console.log(err)
   })
