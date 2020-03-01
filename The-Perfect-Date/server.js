@@ -24,7 +24,7 @@ app.use(express.json());
 // Static directory
 app.use(express.static("public"));
 
-
+  
 function populatedb() {
   db.Question.create({
     text: "Where do you feel most comfortable?",
@@ -105,14 +105,9 @@ function populatedb() {
   }).then(function(err,data){
     if (err) return console.log(err)
   })
-}
+  // <br>
+  //Line Break for Date Questions
 
-
-
-
-
-
-function populatedb() {
   db.Question.create({
     text: "What is your first date price point?",
     choice1: "$",
@@ -236,9 +231,6 @@ function populatedb() {
 }
 
 
-// app.get("/",function(req,res){
-  // res.sendFile(__dirname+"/public/Main.html")
-// });
 app.get("/",function(req,res){
   res.sendFile(__dirname+"/public/Main.html")
 });
