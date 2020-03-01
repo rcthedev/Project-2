@@ -23,7 +23,113 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Static directory
 app.use(express.static("public"));
+
+function populatedb() {
+  db.Question.create({
+    text: "Where do you feel most comfortable?",
+    choice1: "Indoors",
+    choice2: "Night Out",
+    choice3: "Outdoors",
+    question_type: "User"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "What is your favorite type of food?",
+    choice1: "Asian",
+    choice2: "Mexican",
+    choice3: "Italian",
+    choice4: "American",
+    choice5: "Vegetarian/Vegan",
+    choice6: "Indian",
+    question_type: "User"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "How do you spend your free time?",
+    choice1: "Indoors",
+    choice2: "Night Out",
+    choice3: "Outdoors",
+    choice4: "Day Trip",
+    question_type: "User"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "How would you describe yourself?",
+    choice: "Introvert",
+    choice: "Extrovert",
+    choice: "Free Spirit",
+    choice: "Reserved",
+    question_type: "User"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "Time of Day?",
+    choice1: "Mornings",
+    choice2: "Evenings",
+    choice3: "MidDay",
+    question_type: "User"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "Are you more of a take charge or go with the flow type of person?",
+    choice1: "Take Charge",
+    choice2: "Go with the Flow",
+    question_type: "User"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "What is your love language?",
+    choice1: "Words of Affirmation",
+    choice2: "Acts of Service",
+    choice3: "Recieving Gifts",
+    choice4: "Quality Time",
+    choice5: "Physical Touch",
+    question_type: "User"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "Before going on a date, I'm most likely doing?",
+    choice1: "Playing Video Games",
+    choice2: "Talking with Friends",
+    choice3: "Working Out",
+    choice4: "Reading a Book",
+    question_type: "User"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+}
+
 // Routes
+app.get("/",function(req,res){
+  res.sendFile(__dirname+"/public/Main.html")
+});
+app.get("/api/questions",function(req,res){
+  db.Question.findAll()
+  .then(function(data){
+    console.log(data);
+    res.json(data)
+  })
+})
+app.post("/api/question",function(req,res){
+  for (let i = 0; i < req.body.choices.length; i++) {
+    db.UserResponse.create({
+      QuestionId: req.body.choices[i].id,
+      answer: req.body.choices[i].choice
+    })
+    .then(function(data){
+      console.log(data);
+      res.end()
+    })
+  console.log(req.body);
+  } 
+})
 // =============================================================
 // require("./routes/html-routes.js")(app);
 // require("./routes/author-api-routes.js")(app);
@@ -32,6 +138,7 @@ app.use(express.static("public"));
 // =============================================================
 db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
+    populatedb();
     console.log("App listening on PORT " + PORT);
   });
 });
