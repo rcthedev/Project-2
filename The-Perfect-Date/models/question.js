@@ -8,6 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
+    
     // The Quiz Options cannot be null
     choice1: {
       type: DataTypes.STRING,
@@ -30,6 +31,14 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: true,
       },
       choice6: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      choice7: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      choice8: {
         type: DataTypes.STRING,
         allowNull: true,
       },

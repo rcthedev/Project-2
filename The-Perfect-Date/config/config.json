@@ -1,15 +1,15 @@
 {
     "development": {
       "username": "root",
-      "password": "tazzy",
-      "database": "date_db",
+      "password": "",
+      "database": "user_profile_db",
       "host": "127.0.0.1",
       "port": 3306,
       "dialect": "mysql"
     },
     "test": {
       "username": "root",
-      "password": "tazzy",
+      "password": "",
       "database": "Question",
       "host": "127.0.0.1",
       "port": 3306,
@@ -17,7 +17,7 @@
     },
     "production": {
       "username": "root",
-      "password": "tazzy",
+      "password": "",
       "database": "User",
       "host": "127.0.0.1",
       "port": 3306,

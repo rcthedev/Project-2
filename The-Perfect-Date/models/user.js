@@ -13,7 +13,11 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     // The Quiz Options cannot be null
-    password: {
+    pass: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    username:{
       type: DataTypes.STRING,
       allowNull: false
     }
@@ -36,3 +40,5 @@ User.addHook("beforeCreate", function(user) {
   };
   return User;
 };
+
+
