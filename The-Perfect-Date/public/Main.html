@@ -24,7 +24,7 @@
     <div class="container">
       <div class="row">
         <div class="full column">
-          
+
           <h5>Welcome to the perfect date!</h5>
           <p>
             Are you tired of all the basic dates of movies and dinner? well simply answer a few questions and we’ll
@@ -32,7 +32,7 @@
             we’ll supply the ideas but you have to supply your own date!
           </p>
         </div>
-       
+
       </div>
     </div>
   </section>
@@ -53,14 +53,14 @@
         </div>
         <div class="one-third column">
           <i class="fa fa-bus"></i>
-          <h5>Afordable Easy to Use Ui </h5>
+          <h5>Afordable and Easy to Use Ui </h5>
         </div>
       </div>
     </div>
   </section>
   <section>
     <div class="container">
-      <div id="map" style="width:50vw; height:50vh"></div>
+      <div id="map" style="width:60vw; height:50vh"></div>
     </div>
   </section>
 
@@ -69,7 +69,16 @@
     <div class="container">
     </div>
   </section>
-  
+  <script>
+    function openDrawerMenu() {
+      var x = document.getElementById("mainNavBar");
+      if (x.className === "navBar") {
+        x.className += " responsive";
+      } else {
+        x.className = "navBar";
+      }
+    }
+  </script>
 
   <script type="text/javascript"
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG-uv9xEOb8Dxl8A5pXUdvBZfdZCHjMjg&libraries=places"></script>

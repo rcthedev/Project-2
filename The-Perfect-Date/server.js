@@ -24,6 +24,7 @@ app.use(express.json());
 // Static directory
 app.use(express.static("public"));
 
+
 function populatedb() {
   db.Question.create({
     text: "Where do you feel most comfortable?",
@@ -58,10 +59,10 @@ function populatedb() {
   })
   db.Question.create({
     text: "How would you describe yourself?",
-    choice: "Introvert",
-    choice: "Extrovert",
-    choice: "Free Spirit",
-    choice: "Reserved",
+    choice1: "Introvert",
+    choice2: "Extrovert",
+    choice3: "Free Spirit",
+    choice4: "Reserved",
     question_type: "User"
   }).then(function(err,data){
     if (err) return console.log(err)
@@ -76,7 +77,7 @@ function populatedb() {
     if (err) return console.log(err)
   })
   db.Question.create({
-    text: "Are you more of a take charge or go with the flow type of person?",
+    text: "Are you more of a take charge or go with the flow tyoe of person?",
     choice1: "Take Charge",
     choice2: "Go with the Flow",
     question_type: "User"
@@ -90,12 +91,12 @@ function populatedb() {
     choice3: "Recieving Gifts",
     choice4: "Quality Time",
     choice5: "Physical Touch",
-    question_type: "User"
+    question_type: "Date"
   }).then(function(err,data){
     if (err) return console.log(err)
   })
   db.Question.create({
-    text: "Before going on a date, I'm most likely doing?",
+    text: "Before going on a date, I;m most likely doing?",
     choice1: "Playing Video Games",
     choice2: "Talking with Friends",
     choice3: "Working Out",
@@ -106,17 +107,19 @@ function populatedb() {
   })
 }
 
-// Routes
+
 app.get("/",function(req,res){
   res.sendFile(__dirname+"/public/Main.html")
 });
-app.get("/api/questions",function(req,res){
+
+app.get("/api/uquestions",function(req,res){
   db.Question.findAll()
   .then(function(data){
     console.log(data);
     res.json(data)
   })
 })
+
 app.post("/api/question",function(req,res){
   for (let i = 0; i < req.body.choices.length; i++) {
     db.UserResponse.create({
@@ -129,7 +132,11 @@ app.post("/api/question",function(req,res){
     })
   console.log(req.body);
   } 
+
+
 })
+
+// Routes
 // =============================================================
 // require("./routes/html-routes.js")(app);
 // require("./routes/author-api-routes.js")(app);

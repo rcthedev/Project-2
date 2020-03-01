@@ -14,15 +14,14 @@
     <div class="container">
         <div class="navBar" id="mainNavBar">
           <a href="./Main.html">Home</a>
-          <a href="./questions.html">questionare</a>
+          <a href="./questions.html">Questionare</a>
           <a href="./login.html">Login/Signup</a>
           <a href="./contactus.html">Contact</a>
           <a href="javascript:void(0);" class="icon" onClick="openDrawerMenu()">&#9776;</a>
         </div>
       </div>
     <div class="container">
-
-        <form>
+        <form class="login">
             <div>
                 <label>User Name</label>
                 <input class="u-full-width" type="text" placeholder="Enter User Name">
@@ -31,6 +30,22 @@
                 <label>Password</label>
                 <input class="u-full-width" placeholder="Enter password"></input>
                 </textarea>
+            </div>
+        </form>
+    </div>
+    <div class= "container">
+        <form class="signup">
+            <div>
+                <label>Email</label>
+                <input class="u-full-width" placeholder="Enter Email"></input>
+            </div>
+            <div>
+                <label>User Name</label>
+                <input class="u-full-width" placeholder="Enter UserName"></input>
+            </div>
+            <div>
+                <label>Enter Password</label>
+                <input class="u-full-width" placeholder="Enter Password"></input>
             </div>
             <div>
                 <label>ReEnter Password</label>
@@ -45,6 +60,17 @@
             <input class="u-full-with button-primary" type="submit" value="Submit">
         </form>
     </div>
+    <script>
+        function openDrawerMenu(){
+      var x = document.getElementById("mainNavBar");
+      if (x.className === "navBar"){
+        x.className += " responsive";
+      } else {
+        x.className = "navBar";
+      }
+    }
+      </script>
+     
 </body>
 
 </html>
