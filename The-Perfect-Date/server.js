@@ -27,6 +27,121 @@ app.use(express.static("public"));
 
 function populatedb() {
   db.Question.create({
+    text: "Where do you feel most comfortable?",
+    choice1: "Indoors",
+    choice2: "Night Out",
+    choice3: "Outdoors",
+    question_type: "User"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "What is your favorite type of food?",
+    choice1: "Asian",
+    choice2: "Mexican",
+    choice3: "Italian",
+    choice4: "American",
+    choice5: "Vegetarian/Vegan",
+    choice6: "Indian",
+    question_type: "User"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "How do you spend your free time?",
+    choice1: "Indoors",
+    choice2: "Night Out",
+    choice3: "Outdoors",
+    choice4: "Day Trip",
+    question_type: "User"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "How would you describe yourself?",
+    choice1: "Introvert",
+    choice2: "Extrovert",
+    choice3: "Free Spirit",
+    choice4: "Reserved",
+    question_type: "User"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "Time of Day?",
+    choice1: "Mornings",
+    choice2: "Evenings",
+    choice3: "MidDay",
+    question_type: "User"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "Are you more of a take charge or go with the flow tyoe of person?",
+    choice1: "Take Charge",
+    choice2: "Go with the Flow",
+    question_type: "User"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "What is your love language?",
+    choice1: "Words of Affirmation",
+    choice2: "Acts of Service",
+    choice3: "Recieving Gifts",
+    choice4: "Quality Time",
+    choice5: "Physical Touch",
+    question_type: "User"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+  db.Question.create({
+    text: "Before going on a date, I;m most likely doing?",
+    choice1: "Playing Video Games",
+    choice2: "Talking with Friends",
+    choice3: "Working Out",
+    choice4: "Reading a Book",
+    question_type: "User"
+  }).then(function(err,data){
+    if (err) return console.log(err)
+  })
+}
+
+
+app.get("/",function(req,res){
+  res.sendFile(__dirname+"/public/Main.html")
+});
+
+app.get("/api/uquestions",function(req,res){
+  db.Question.findAll({
+    where: {
+      question_type: "User"
+    }
+  })
+  .then(function(data){
+    console.log(data);
+    res.json(data)
+  })
+})
+
+app.post("/api/question",function(req,res){
+  for (let i = 0; i < req.body.choices.length; i++) {
+    db.UserResponse.create({
+      QuestionId: req.body.choices[i].id,
+      answer: req.body.choices[i].choice
+    })
+    .then(function(data){
+      console.log(data);
+      res.end()
+    })
+  console.log(req.body);
+  } 
+
+
+})
+
+function populatedb() {
+  db.Question.create({
     text: "What is your first date price point?",
     choice1: "$",
     choice2: "$$",
@@ -154,7 +269,11 @@ app.get("/",function(req,res){
 });
 
 app.get("/api/questions",function(req,res){
-  db.Question.findAll()
+  db.Question.findAll({
+    where: {
+      question_type: "Date"
+    }
+  })
   .then(function(data){
     console.log(data);
     res.json(data)
@@ -175,7 +294,6 @@ app.post("/api/question",function(req,res){
   } 
 
 })
-
 
 // Routes
 // =============================================================
