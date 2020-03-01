@@ -142,7 +142,7 @@ function populatedb() {
     // choice4: "",
     // choice5: "",
     // choice6: "",
-    question_type: "User"
+    question_type: "Date"
   }).then(function(err,data){
     if (err) return console.log(err)
   })
@@ -173,7 +173,6 @@ app.post("/api/question",function(req,res){
     })
   console.log(req.body);
   } 
-
 
 })
 
