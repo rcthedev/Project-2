@@ -105,7 +105,7 @@ function populatedb() {
   }).then(function(err,data){
     if (err) return console.log(err)
   })
-  <br>
+  // <br>
   //Line Break for Date Questions
 
   db.Question.create({
