@@ -108,37 +108,9 @@ function populatedb() {
 }
 
 
-app.get("/",function(req,res){
-  res.sendFile(__dirname+"/public/Main.html")
-});
-
-app.get("/api/uquestions",function(req,res){
-  db.Question.findAll({
-    where: {
-      question_type: "User"
-    }
-  })
-  .then(function(data){
-    console.log(data);
-    res.json(data)
-  })
-})
-
-app.post("/api/question",function(req,res){
-  for (let i = 0; i < req.body.choices.length; i++) {
-    db.UserResponse.create({
-      QuestionId: req.body.choices[i].id,
-      answer: req.body.choices[i].choice
-    })
-    .then(function(data){
-      console.log(data);
-      res.end()
-    })
-  console.log(req.body);
-  } 
 
 
-})
+
 
 function populatedb() {
   db.Question.create({
@@ -264,16 +236,15 @@ function populatedb() {
 }
 
 
+// app.get("/",function(req,res){
+  // res.sendFile(__dirname+"/public/Main.html")
+// });
 app.get("/",function(req,res){
   res.sendFile(__dirname+"/public/Main.html")
 });
 
 app.get("/api/questions",function(req,res){
-  db.Question.findAll({
-    where: {
-      question_type: "Date"
-    }
-  })
+  db.Question.findAll()
   .then(function(data){
     console.log(data);
     res.json(data)
